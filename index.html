@@ -1682,6 +1682,38 @@
         padding-bottom: calc(1.5rem + env(safe-area-inset-bottom));
       }
     }
+
+    /* ── Filter Button Styles ── */
+    .filter-btn {
+      padding: 10px 18px;
+      border-radius: 20px;
+      border: 2px solid transparent;
+      background: rgba(255,255,255,0.2);
+      color: white;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      transition: all 0.2s ease;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    
+    .filter-btn:hover {
+      background: rgba(255,255,255,0.3);
+    }
+    
+    .filter-btn.active {
+      border-color: var(--gold);
+      background: rgba(255,255,255,0.4);
+      transform: scale(1.05);
+      font-weight: 500;
+      box-shadow: 0 4px 15px rgba(212, 168, 67, 0.3);
+    }
+    
+    .filter-btn:active {
+      transform: scale(0.95);
+    }
   </style>
 </head>
 
@@ -1974,6 +2006,7 @@
           <div style="display: flex; gap: 10px; margin-top: 1rem; flex-wrap: wrap; justify-content: center;">
             <button class="mic-btn" id="pb-capture-btn" onclick="takePhoto()">Ambil Foto</button>
             <button class="mic-btn" id="pb-retake-btn" onclick="resetPhotobooth()" style="display: none; background: rgba(255,255,255,0.2);">Ulangi</button>
+            <button class="mic-btn" id="pb-change-frame-btn" onclick="changeFramePhotobooth()" style="background: rgba(255,255,255,0.2);">Ganti Frame</button>
           </div>
         </div>
 
@@ -1981,10 +2014,10 @@
         <div id="pb-filter-view" style="display: none; flex-direction: column; align-items: center; width: 100%; margin-top: 1rem; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 1rem;">
           <p style="color: white; font-family: 'DM Sans', sans-serif; margin-bottom: 10px; font-size: 0.85rem;">Pilih Filter:</p>
           <div style="display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin-bottom: 15px;">
-            <button class="filter-btn" onclick="applyFilter('none')" style="padding: 6px 12px; border-radius: 20px; border: none; background: rgba(255,255,255,0.2); color: white; cursor: pointer;">Normal</button>
-            <button class="filter-btn" onclick="applyFilter('grayscale(100%)')" style="padding: 6px 12px; border-radius: 20px; border: none; background: rgba(255,255,255,0.2); color: white; cursor: pointer;">B&W</button>
-            <button class="filter-btn" onclick="applyFilter('sepia(100%)')" style="padding: 6px 12px; border-radius: 20px; border: none; background: rgba(255,255,255,0.2); color: white; cursor: pointer;">Sepia</button>
-            <button class="filter-btn" onclick="applyFilter('contrast(120%) saturate(120%) sepia(30%)')" style="padding: 6px 12px; border-radius: 20px; border: none; background: rgba(255,255,255,0.2); color: white; cursor: pointer;">Vintage</button>
+            <button class="filter-btn active" onclick="applyFilter('none', this)">Normal</button>
+            <button class="filter-btn" onclick="applyFilter('grayscale(100%)', this)">B&W</button>
+            <button class="filter-btn" onclick="applyFilter('sepia(100%)', this)">Sepia</button>
+            <button class="filter-btn" onclick="applyFilter('contrast(120%) saturate(120%) sepia(30%)', this)">Vintage</button>
           </div>
           <button class="mic-btn" id="pb-download-btn" onclick="downloadPhotostrip()" style="background: var(--rose); font-size: 1rem; padding: 12px 30px;">Download ⬇️</button>
         </div>

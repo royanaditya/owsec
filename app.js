@@ -668,8 +668,14 @@ function takePhoto() {
   }, 1000);
 }
 
-function applyFilter(filter) {
+function applyFilter(filter, btn) {
   pbCurrentFilter = filter;
+  
+  if (btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+  
   renderFinalPhotostrip();
 }
 
@@ -742,7 +748,37 @@ function resetPhotobooth() {
   document.getElementById('pb-retake-btn').style.display = 'none';
   document.getElementById('pb-capture-btn').style.display = 'inline-block';
   pbPhotos = [];
+  
+  // Reset active filter button visually to Normal
+  document.querySelectorAll('.filter-btn').forEach((b, idx) => {
+    if (idx === 0) b.classList.add('active');
+    else b.classList.remove('active');
+  });
+  
   startCamera();
+}
+
+function changeFramePhotobooth() {
+  document.getElementById('pb-camera-view').style.display = 'none';
+  document.getElementById('pb-filter-view').style.display = 'none';
+  document.getElementById('pb-template-select').style.display = 'flex';
+  
+  document.getElementById('pb-retake-btn').style.display = 'none';
+  document.getElementById('pb-capture-btn').style.display = 'inline-block';
+  
+  pbPhotos = [];
+  
+  const liveCanvas = document.getElementById('pb-live-canvas');
+  if (liveCanvas) {
+    const ctx = liveCanvas.getContext('2d');
+    ctx.clearRect(0, 0, liveCanvas.width, liveCanvas.height);
+  }
+  
+  // Reset active filter button visually to Normal
+  document.querySelectorAll('.filter-btn').forEach((b, idx) => {
+    if (idx === 0) b.classList.add('active');
+    else b.classList.remove('active');
+  });
 }
 
 function downloadPhotostrip() {
