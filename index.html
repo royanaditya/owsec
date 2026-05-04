@@ -1,0 +1,2006 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday 🎂</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&family=Caveat:wght@400;700&display=swap"
+    rel="stylesheet">
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --cream: #fdf6ec;
+      --blush: #f2c4b8;
+      --rose: #c18b60;
+      --mauve: #8c5a35;
+      --gold: #d4a843;
+      --dark: #2a1a1f;
+      --soft: #f9efe8;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--dark);
+      overflow: hidden;
+      height: 100vh;
+    }
+
+
+    /* ── NAVIGATION BUTTONS ── */
+    .top-nav {
+      position: absolute;
+      top: env(safe-area-inset-top, 20px);
+      left: env(safe-area-inset-left, 20px);
+      z-index: 100;
+      display: flex;
+      gap: 10px;
+    }
+
+    .nav-btn {
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      color: var(--cream);
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+
+    .nav-btn:hover {
+      background: rgba(255, 255, 255, 0.25);
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    }
+
+    /* ── PAGES ── */
+    .page {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.8s ease;
+      background-color: #2b4566;
+      /* Denim blue base */
+      background-image:
+        repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.03) 0px, rgba(255, 255, 255, 0.03) 1px, transparent 1px, transparent 3px),
+        repeating-linear-gradient(-45deg, rgba(0, 0, 0, 0.08) 0px, rgba(0, 0, 0, 0.08) 1px, transparent 1px, transparent 3px),
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.25'/%3E%3C/svg%3E");
+    }
+
+    .page.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    /* ══════════════════════════════
+     PAGE 1 — CAKE
+  ══════════════════════════════ */
+    #page1 {
+      /* background removed for global jeans texture */
+    }
+
+    .cake-scene {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+    }
+
+    /* Candles */
+    .candles {
+      display: flex;
+      gap: 18px;
+      align-items: flex-end;
+      margin-bottom: -2px;
+      position: relative;
+      z-index: 3;
+    }
+
+    .candle {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .flame {
+      width: 12px;
+      height: 18px;
+      background: radial-gradient(ellipse at 50% 80%, #ffe066, #ff9a00 60%, transparent 100%);
+      border-radius: 50% 50% 30% 30%;
+      animation: flicker 0.8s ease-in-out infinite alternate;
+      filter: drop-shadow(0 0 4px #ffcc44);
+      transform-origin: bottom center;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    .flame.blown {
+      transform: scaleY(0);
+      opacity: 0;
+    }
+
+    @keyframes flicker {
+      0% {
+        transform: scaleX(1) scaleY(1) rotate(-2deg);
+      }
+
+      100% {
+        transform: scaleX(0.85) scaleY(1.1) rotate(2deg);
+      }
+    }
+
+    .candle-body {
+      width: 10px;
+      height: 40px;
+      border-radius: 3px 3px 2px 2px;
+    }
+
+    .candle:nth-child(1) .candle-body {
+      background: linear-gradient(to right, #f2c4b8, #e8a090);
+    }
+
+    .candle:nth-child(2) .candle-body {
+      background: linear-gradient(to right, #d4a843, #c4922e);
+    }
+
+    .candle:nth-child(3) .candle-body {
+      background: linear-gradient(to right, #b8d4c4, #94baa8);
+    }
+
+    /* Cake tiers */
+    .cake-top {
+      width: 180px;
+      height: 60px;
+      background: linear-gradient(to bottom, #f9ddd5, #f2c4b8);
+      border-radius: 50% 50% 0 0 / 30% 30% 0 0;
+      border: 2px solid #e8a090;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cake-top::after {
+      content: '';
+      position: absolute;
+      top: -8px;
+      left: 15px;
+      right: 15px;
+      height: 14px;
+      background: repeating-linear-gradient(90deg, #f9e4e0 0px, #f9e4e0 12px, #f2c4b8 12px, #f2c4b8 24px);
+      border-radius: 8px;
+    }
+
+    .cake-frosting {
+      position: absolute;
+      bottom: 0;
+      left: -5px;
+      right: -5px;
+      height: 12px;
+      background: #fff9f7;
+      border-radius: 0 0 4px 4px;
+      border: 1px solid #f2c4b8;
+    }
+
+    .cake-frosting::before {
+      content: '';
+      position: absolute;
+      top: -5px;
+      left: 8px;
+      right: 8px;
+      height: 10px;
+      background: repeating-radial-gradient(circle at 10px 5px, #fff9f7 0, #fff9f7 5px, transparent 5px, transparent 20px);
+      filter: url(#drops);
+    }
+
+    .cake-bottom {
+      width: 240px;
+      height: 80px;
+      background: linear-gradient(to bottom, #e8c4b8, #d4a090);
+      border-radius: 4px;
+      border: 2px solid #c89080;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cake-bottom::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(0deg, transparent 0px, transparent 18px, rgba(255, 255, 255, 0.15) 18px, rgba(255, 255, 255, 0.15) 19px);
+    }
+
+    .cake-plate {
+      width: 270px;
+      height: 14px;
+      background: linear-gradient(to bottom, #f9f0e8, #e8ddd0);
+      border-radius: 4px;
+      border: 1px solid #d4c4b0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    /* Page 1 text */
+    .page1-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      color: var(--cream);
+      text-align: center;
+      margin-bottom: 2rem;
+      line-height: 1.2;
+    }
+
+    .page1-title span {
+      color: var(--rose);
+      font-style: italic;
+    }
+
+    .mic-hint {
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: var(--cream);
+      opacity: 0.7;
+      text-align: center;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 0.5;
+      }
+
+      50% {
+        opacity: 1;
+      }
+    }
+
+    .mic-btn {
+      margin-top: 1rem;
+      padding: 12px 28px;
+      background: var(--rose);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 16px rgba(201, 106, 90, 0.35);
+    }
+
+    .mic-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(201, 106, 90, 0.45);
+    }
+
+    .sound-bar {
+      display: flex;
+      gap: 4px;
+      align-items: flex-end;
+      height: 30px;
+      margin-top: 1rem;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .sound-bar.active {
+      opacity: 1;
+    }
+
+    .sound-bar span {
+      width: 5px;
+      background: var(--rose);
+      border-radius: 3px;
+      animation: bar 0.6s ease-in-out infinite alternate;
+    }
+
+    .sound-bar span:nth-child(1) {
+      animation-delay: 0s;
+    }
+
+    .sound-bar span:nth-child(2) {
+      animation-delay: 0.1s;
+    }
+
+    .sound-bar span:nth-child(3) {
+      animation-delay: 0.2s;
+    }
+
+    .sound-bar span:nth-child(4) {
+      animation-delay: 0.1s;
+    }
+
+    .sound-bar span:nth-child(5) {
+      animation-delay: 0s;
+    }
+
+    @keyframes bar {
+      from {
+        height: 4px;
+      }
+
+      to {
+        height: 24px;
+      }
+    }
+
+    /* ══════════════════════════════
+     PAGE 2 — PHOTO SLIDESHOW
+  ══════════════════════════════ */
+    #page2 {
+      /* background removed */
+      overflow: hidden;
+      justify-content: center;
+      align-items: center;
+      overscroll-behavior-x: none;
+      /* Prevent swipe navigation */
+    }
+
+    .slideshow {
+      position: relative;
+      width: min(92vw, 800px);
+      aspect-ratio: 16/9;
+      border-radius: 4px 8px 8px 4px;
+      perspective: 2000px;
+      /* Enable 3D space */
+      box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(255, 255, 255, 0.08);
+      z-index: 2;
+      touch-action: pan-y;
+      /* Prevent browser from intercepting horizontal swipes */
+    }
+
+    /* Album spine decoration */
+    .slideshow::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 20px;
+      background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2) 40%, rgba(255, 255, 255, 0.1) 50%, rgba(0, 0, 0, 0.4) 100%);
+      border-radius: 4px 0 0 4px;
+      z-index: 10;
+      pointer-events: none;
+      box-shadow: inset -1px 0 2px rgba(0, 0, 0, 0.5);
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transform-origin: left center;
+      transition: transform 1s cubic-bezier(0.3, 1, 0.4, 1), opacity 1s ease;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      transform-style: preserve-3d;
+      border-radius: 4px 8px 8px 4px;
+      background: var(--dark);
+      overflow: hidden;
+    }
+
+    /* Page shadow for realism */
+    .slide::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba(0, 0, 0, 0.5) 0%, transparent 15%, transparent 100%);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* Active state - flat */
+    .slide.active {
+      opacity: 1;
+      transform: rotateY(0deg);
+      z-index: 2;
+    }
+
+    /* GOING NEXT (Right to Left turn): Old slide flips over to the left */
+    .slide.prev-slide-out {
+      opacity: 1;
+      transform: rotateY(-180deg);
+      z-index: 3;
+    }
+
+    /* GOING NEXT: New slide sits underneath waiting */
+    .slide.next-slide {
+      opacity: 1;
+      transform: rotateY(0deg);
+      z-index: 1;
+    }
+
+    /* GOING PREV (Left to Right turn): New slide starts flipped on the left and swings in */
+    .slide.prev-slide {
+      opacity: 1;
+      transform: rotateY(-180deg);
+      z-index: 3;
+      transition: none;
+      /* Instantly set to -180deg before reflow */
+    }
+
+    /* GOING PREV: Old slide sits underneath waiting */
+    .slide.next-slide-out {
+      opacity: 1;
+      transform: rotateY(0deg);
+      z-index: 1;
+    }
+
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .slideshow::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, transparent 50%, rgba(0, 0, 0, 0.25) 100%);
+      pointer-events: none;
+      z-index: 5;
+    }
+
+    .slide-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.2rem, 3vw, 1.8rem);
+      color: var(--cream);
+      text-align: center;
+      margin-bottom: 1.2rem;
+      letter-spacing: 0.05em;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+      z-index: 2;
+    }
+
+    .slide-counter {
+      position: absolute;
+      bottom: 12px;
+      right: 16px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.7);
+      z-index: 10;
+      letter-spacing: 0.1em;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .slide-nav {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-top: 1.2rem;
+      z-index: 3;
+    }
+
+    .slide-arrow {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(8px);
+      color: var(--cream);
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, transform 0.15s;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .slide-arrow:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: scale(1.08);
+    }
+
+    .slide-arrow:disabled {
+      opacity: 0.25;
+      cursor: default;
+      transform: none;
+    }
+
+    .slide-dots {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .slide-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.25);
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    .slide-dot.active {
+      background: var(--gold);
+      transform: scale(1.3);
+    }
+
+    .slide-dot:hover {
+      background: rgba(255, 255, 255, 0.5);
+    }
+
+    .slide-next-btn {
+      margin-top: 1rem;
+      padding: 10px 28px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: var(--cream);
+      border-radius: 50px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      z-index: 2;
+    }
+
+    .slide-next-btn:hover {
+      background: rgba(255, 255, 255, 0.15);
+      transform: translateY(-2px);
+    }
+
+    .swipe-notif {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(0, 0, 0, 0.75);
+      color: white;
+      padding: 16px 24px;
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      z-index: 100;
+      pointer-events: none;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      opacity: 0;
+      animation: fadeInOut 4s ease-in-out forwards 0.5s;
+    }
+
+    .swipe-notif p {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      text-align: center;
+    }
+
+    .swipe-notif .hand-icon {
+      font-size: 2.5rem;
+      animation: swipeAnim 1.5s infinite ease-in-out;
+    }
+
+    @keyframes swipeAnim {
+      0% {
+        transform: translateX(25px) rotate(10deg);
+      }
+
+      50% {
+        transform: translateX(-25px) rotate(-10deg);
+      }
+
+      100% {
+        transform: translateX(25px) rotate(10deg);
+      }
+    }
+
+    @keyframes fadeInOut {
+      0% {
+        opacity: 0;
+        transform: translate(-50%, -40%);
+      }
+
+      15% {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+      }
+
+      85% {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+      }
+
+      100% {
+        opacity: 0;
+        transform: translate(-50%, -50%);
+        visibility: hidden;
+      }
+    }
+
+    /* ══════════════════════════════
+     PAGE 3 — PHOTOSTRIP
+  ══════════════════════════════ */
+    #page3 {
+      /* background removed */
+      overflow-y: auto;
+      overflow-x: hidden;
+      justify-content: flex-start;
+      /* Prevent clipping at top */
+    }
+
+    .machine {
+      width: 200px;
+      background: linear-gradient(to bottom, #3a2a35, #2a1a25);
+      border-radius: 16px;
+      padding: 20px 16px 30px;
+      position: relative;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      margin-bottom: -20px;
+      z-index: 2;
+    }
+
+    .machine-slot {
+      width: 100%;
+      height: 8px;
+      background: #0a0808;
+      border-radius: 4px;
+      margin-bottom: 16px;
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.8);
+    }
+
+    .machine-lens {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #3a5a80, #0a1520);
+      border: 3px solid #4a3a45;
+      margin: 0 auto;
+      box-shadow: 0 0 20px rgba(100, 160, 220, 0.2), inset 0 0 10px rgba(0, 0, 0, 0.5);
+      position: relative;
+    }
+
+    .machine-lens::after {
+      content: '';
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      width: 15px;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.25);
+      border-radius: 50%;
+      transform: rotate(-30deg);
+    }
+
+    .machine-buttons {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      margin-top: 16px;
+    }
+
+    .machine-buttons span {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+
+    .machine-buttons span:nth-child(1) {
+      background: #c96a5a;
+    }
+
+    .machine-buttons span:nth-child(2) {
+      background: #d4a843;
+    }
+
+    .machine-buttons span:nth-child(3) {
+      background: #7a9a7a;
+    }
+
+    /* The strip coming out */
+    .strip-wrapper {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .photostrip {
+      width: 160px;
+      background: white;
+      padding: 8px 8px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      transform: translateY(-100%);
+      opacity: 0;
+      transition: transform 4s linear, opacity 0.5s;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+    }
+
+    .photostrip.out {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .strip-photo {
+      width: 100%;
+      aspect-ratio: 1;
+      background: linear-gradient(135deg, #e8ddd4 0%, #d8ccc4 100%);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .strip-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: sepia(0.2) contrast(1.05);
+    }
+
+    .strip-photo .ph {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      opacity: 0.25;
+    }
+
+    .strip-bottom {
+      text-align: center;
+      padding-top: 4px;
+    }
+
+    .strip-bottom p {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.65rem;
+      color: var(--mauve);
+      font-style: italic;
+    }
+
+    .strip-date {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.55rem !important;
+      color: #aaa !important;
+      font-style: normal !important;
+      margin-top: 2px;
+    }
+
+    .p3-message {
+      margin-top: 2rem;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.4rem, 3.5vw, 2rem);
+      color: white;
+      text-align: center;
+      max-width: 500px;
+      line-height: 1.5;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1s 1.5s, transform 1s 1.5s;
+    }
+
+    .p3-message.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .p3-message em {
+      color: var(--blush);
+      font-style: italic;
+    }
+
+    .hearts {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 1.2rem;
+      animation: float-up linear forwards;
+      opacity: 0;
+    }
+
+    @keyframes float-up {
+      0% {
+        opacity: 0.8;
+        transform: translateY(0) scale(1);
+      }
+
+      100% {
+        opacity: 0;
+        transform: translateY(-100vh) scale(0.5);
+      }
+    }
+
+    /* ── CONFETTI ── */
+    #confetti-canvas {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 100;
+      display: none;
+    }
+
+    /* ══════════════════════════════
+       PAGE 0 — ROYAL ENVELOPE
+    ══════════════════════════════ */
+    #page0 {
+      /* background removed for global jeans texture */
+    }
+
+    /* Subtle particle shimmer */
+    #page0::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        radial-gradient(1px 1px at 20% 30%, rgba(201, 106, 90, 0.25), transparent),
+        radial-gradient(1px 1px at 80% 20%, rgba(212, 168, 67, 0.2), transparent),
+        radial-gradient(1px 1px at 50% 60%, rgba(201, 106, 90, 0.15), transparent),
+        radial-gradient(1px 1px at 70% 80%, rgba(242, 196, 184, 0.2), transparent),
+        radial-gradient(1px 1px at 30% 70%, rgba(212, 168, 67, 0.15), transparent),
+        radial-gradient(1px 1px at 10% 90%, rgba(242, 196, 184, 0.15), transparent);
+      background-size: 200px 200px;
+      animation: shimmer 8s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes shimmer {
+      from {
+        transform: translateY(0);
+      }
+
+      to {
+        transform: translateY(-200px);
+      }
+    }
+
+    .envelope-scene {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Envelope body */
+    .envelope {
+      position: relative;
+      width: min(320px, 80vw);
+      height: min(220px, 55vw);
+      background: linear-gradient(160deg, #8c5a35, var(--mauve), #6b4226);
+      border-radius: 6px;
+      border: 2px solid rgba(212, 168, 67, 0.35);
+      box-shadow:
+        0 12px 40px rgba(122, 74, 90, 0.35),
+        0 0 15px rgba(212, 168, 67, 0.05),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      transition: transform 0.5s cubic-bezier(.23, 1, .32, 1), box-shadow 0.5s;
+      overflow: hidden;
+    }
+
+    .envelope.opened {
+      overflow: visible;
+    }
+
+    .envelope-scene:hover .envelope {
+      transform: translateY(-6px);
+      box-shadow:
+        0 20px 55px rgba(122, 74, 90, 0.4),
+        0 0 25px rgba(212, 168, 67, 0.08);
+    }
+
+    /* Gold corner ornaments */
+    .envelope::after {
+      content: '';
+      position: absolute;
+      inset: 6px;
+      border: 1px solid rgba(212, 168, 67, 0.18);
+      border-radius: 3px;
+      pointer-events: none;
+      z-index: 6;
+    }
+
+    /* Envelope flap (top triangle) — covers card */
+    .envelope-flap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 55%;
+      background: linear-gradient(to bottom, #8c5a35, #6b4226);
+      clip-path: polygon(0 0, 50% 100%, 100% 0);
+      z-index: 5;
+      transition: transform 0.8s cubic-bezier(.23, 1, .32, 1), opacity 0.5s;
+      transform-origin: top center;
+    }
+
+    /* Gold line on flap */
+    .envelope-flap::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 100%;
+      clip-path: polygon(2% 0, 50% 96%, 98% 0, 100% 0, 50% 100%, 0 0);
+      background: rgba(212, 168, 67, 0.15);
+      pointer-events: none;
+    }
+
+    .envelope.opened .envelope-flap {
+      transform: rotateX(180deg);
+      opacity: 0;
+    }
+
+    /* Bottom fold — covers lower part of card */
+    .envelope-bottom {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 52%;
+      background: linear-gradient(to top, #8c5a35, #6b4226);
+      clip-path: polygon(0 100%, 50% 5%, 100% 100%);
+      z-index: 4;
+    }
+
+    /* Gold line on bottom fold */
+    .envelope-bottom::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 100%;
+      clip-path: polygon(2% 100%, 50% 8%, 98% 100%, 100% 100%, 50% 3%, 0 100%);
+      background: rgba(212, 168, 67, 0.12);
+      pointer-events: none;
+    }
+
+    /* Left fold */
+    .envelope-left-fold {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(to right, #6b4226, var(--mauve));
+      clip-path: polygon(0 0, 100% 50%, 0 100%);
+      z-index: 3;
+    }
+
+    /* Right fold */
+    .envelope-right-fold {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(to left, #6b4226, var(--mauve));
+      clip-path: polygon(100% 0, 0 50%, 100% 100%);
+      z-index: 3;
+    }
+
+    /* Inner lining */
+    .envelope-inner {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, #f8eed8, #f0e4cc);
+      border-radius: 4px;
+      z-index: 1;
+    }
+
+    /* Card inside — HIDDEN behind folds */
+    .envelope-card {
+      position: absolute;
+      top: 15%;
+      left: 10%;
+      right: 10%;
+      bottom: 20%;
+      background: var(--cream);
+      border-radius: 4px;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.9s cubic-bezier(.23, 1, .32, 1) 0.15s;
+      overflow: hidden;
+      /* Card sits behind all folds — invisible initially */
+    }
+
+    .envelope.opened .envelope-card {
+      transform: translateY(-80px) scale(1.05);
+      z-index: 7;
+    }
+
+    /* Mini cake inside card */
+    .mini-cake {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      transform: scale(0.55);
+      margin-bottom: -8px;
+    }
+
+    .mini-cake .m-candles {
+      display: flex;
+      gap: 10px;
+      margin-bottom: -1px;
+    }
+
+    .mini-cake .m-candle {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .mini-cake .m-flame {
+      width: 7px;
+      height: 11px;
+      background: radial-gradient(ellipse at 50% 80%, #ffe066, #ff9a00 60%, transparent 100%);
+      border-radius: 50% 50% 30% 30%;
+      animation: flicker 0.8s ease-in-out infinite alternate;
+      filter: drop-shadow(0 0 3px #ffcc44);
+    }
+
+    .mini-cake .m-stick {
+      width: 5px;
+      height: 22px;
+      border-radius: 2px;
+    }
+
+    .mini-cake .m-stick.c1 {
+      background: linear-gradient(to right, #f2c4b8, #e8a090);
+    }
+
+    .mini-cake .m-stick.c2 {
+      background: linear-gradient(to right, #d4a843, #c4922e);
+    }
+
+    .mini-cake .m-stick.c3 {
+      background: linear-gradient(to right, #b8d4c4, #94baa8);
+    }
+
+    .mini-cake .m-top {
+      width: 100px;
+      height: 35px;
+      background: linear-gradient(to bottom, #f9ddd5, #f2c4b8);
+      border-radius: 50% 50% 0 0 / 30% 30% 0 0;
+      border: 1.5px solid #e8a090;
+    }
+
+    .mini-cake .m-bottom {
+      width: 130px;
+      height: 45px;
+      background: linear-gradient(to bottom, #e8c4b8, #d4a090);
+      border-radius: 3px;
+      border: 1.5px solid #c89080;
+    }
+
+    .mini-cake .m-plate {
+      width: 150px;
+      height: 8px;
+      background: linear-gradient(to bottom, #f9f0e8, #e8ddd0);
+      border-radius: 3px;
+      border: 1px solid #d4c4b0;
+    }
+
+    .envelope-card .card-text {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(0.85rem, 2.5vw, 1.2rem);
+      color: var(--mauve);
+      font-weight: 700;
+      text-align: center;
+      line-height: 1.3;
+    }
+
+    .envelope-card .card-sub {
+      font-family: 'Caveat', cursive;
+      font-size: clamp(0.7rem, 1.8vw, 0.95rem);
+      color: var(--rose);
+    }
+
+    /* Wax Seal */
+    .envelope-seal {
+      position: absolute;
+      top: 44%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 56px;
+      height: 56px;
+      z-index: 5;
+      transition: transform 0.7s cubic-bezier(.23, 1, .32, 1), opacity 0.5s;
+    }
+
+    .seal-outer {
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 40% 35%, #c59b27, #8b6508 70%, #5c4305);
+      border-radius: 50%;
+      box-shadow:
+        0 4px 14px rgba(0, 0, 0, 0.4),
+        inset 0 2px 4px rgba(255, 255, 255, 0.15),
+        inset 0 -2px 4px rgba(0, 0, 0, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    /* Wavy seal edge */
+    .seal-outer::before {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      background: radial-gradient(circle at 40% 35%, #b3881b, #705004);
+      border-radius: 50%;
+      z-index: -1;
+      mask: radial-gradient(circle, transparent 46%, black 47%);
+      -webkit-mask: radial-gradient(circle, transparent 46%, black 47%);
+    }
+
+    .seal-crown {
+      font-size: 1.3rem;
+      filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
+    }
+
+    .envelope.opened .envelope-seal {
+      transform: translate(-50%, -50%) scale(0) rotate(30deg);
+      opacity: 0;
+    }
+
+    /* Hint text */
+    .envelope-hint {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(0.85rem, 2vw, 1.05rem);
+      color: var(--cream);
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      animation: pulse 2.5s ease-in-out infinite;
+    }
+
+    /* Gold sparkle particles */
+    .env-deco {
+      position: absolute;
+      pointer-events: none;
+      opacity: 0.15;
+      animation: envFloat 5s ease-in-out infinite alternate;
+    }
+
+    @keyframes envFloat {
+      from {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.1;
+      }
+
+      to {
+        transform: translateY(-12px) rotate(8deg);
+        opacity: 0.3;
+      }
+    }
+
+    /* ══════════════════════════════
+       LETTER (inside page0)
+    ══════════════════════════════ */
+    .letter-scene {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      padding: 1.5rem;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: translateY(40px) scale(0.96);
+      transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.23, 1, 0.32, 1), visibility 0s linear 0.8s;
+      z-index: 10;
+    }
+
+    .letter-scene.visible {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateY(0) scale(1);
+      transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.23, 1, 0.32, 1), visibility 0s linear 0s;
+    }
+
+    .letter-paper {
+      position: relative;
+      width: min(420px, 88vw);
+      max-height: 70vh;
+      overflow-y: auto;
+      background: linear-gradient(to bottom, #fdf8f0, #f8f0e4);
+      border: 1px solid #e0d0b8;
+      border-radius: 4px;
+      padding: 2rem 1.8rem;
+      box-shadow:
+        0 8px 32px rgba(122, 74, 90, 0.12),
+        0 2px 8px rgba(0, 0, 0, 0.06),
+        inset 0 0 60px rgba(248, 240, 228, 0.5);
+    }
+
+    /* Subtle paper lines */
+    .letter-paper::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(180deg,
+          transparent 0px, transparent 30px,
+          rgba(180, 160, 140, 0.1) 30px, rgba(180, 160, 140, 0.1) 31px);
+      pointer-events: none;
+      border-radius: 4px;
+    }
+
+    /* Scrollbar styling */
+    .letter-paper::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    .letter-paper::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .letter-paper::-webkit-scrollbar-thumb {
+      background: rgba(122, 74, 90, 0.2);
+      border-radius: 2px;
+    }
+
+    .letter-arabic {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(0.85rem, 2vw, 1.05rem);
+      color: var(--mauve);
+      text-align: center;
+      direction: rtl;
+      margin-bottom: 1.2rem;
+      opacity: 0.85;
+      line-height: 1.8;
+    }
+
+    .letter-greeting {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.1rem, 3vw, 1.5rem);
+      color: var(--mauve);
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 1.5rem;
+      line-height: 1.3;
+    }
+
+    .letter-body {
+      font-family: 'Caveat', cursive;
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      color: #3a2a20;
+      line-height: 1.7;
+      text-align: left;
+    }
+
+    .letter-body p {
+      margin-bottom: 0.9rem;
+    }
+
+    .letter-body .letter-italic {
+      font-style: italic;
+      color: var(--mauve);
+      opacity: 0.9;
+    }
+
+    .letter-sign {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(0.85rem, 2vw, 1.05rem);
+      color: var(--mauve);
+      text-align: right;
+      margin-top: 1.2rem;
+      line-height: 1.6;
+    }
+
+    .letter-sign .sign-name {
+      font-family: 'Caveat', cursive;
+      font-size: clamp(1.3rem, 3vw, 1.7rem);
+      font-weight: 700;
+      color: var(--rose);
+    }
+
+    .letter-divider {
+      text-align: center;
+      color: var(--blush);
+      font-size: 0.8rem;
+      letter-spacing: 0.3em;
+      margin: 1rem 0;
+      opacity: 0.6;
+    }
+
+    .letter-continue-btn {
+      margin-top: 1.2rem;
+      padding: 12px 32px;
+      background: var(--mauve);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 16px rgba(122, 74, 90, 0.3);
+    }
+
+    .letter-continue-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(122, 74, 90, 0.4);
+    }
+
+    /* ── TRANSITION ── */
+    .page-fade {
+      position: fixed;
+      inset: 0;
+      background: var(--cream);
+      z-index: 200;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+
+    .page-fade.out {
+      opacity: 1;
+    }
+
+    .page-fade.in {
+      opacity: 0;
+    }
+
+    /* ══════════════════════════════
+       RESPONSIVE — MOBILE
+    ══════════════════════════════ */
+
+    /* ── Small phones (≤ 480px) ── */
+    @media (max-width: 480px) {
+
+      /* Cake page */
+      .page1-title {
+        font-size: 1.6rem;
+        margin-bottom: 1.2rem;
+      }
+
+      .cake-top {
+        width: 130px;
+        height: 45px;
+      }
+
+      .cake-bottom {
+        width: 170px;
+        height: 55px;
+      }
+
+      .cake-plate {
+        width: 200px;
+        height: 10px;
+      }
+
+      .candle-body {
+        height: 28px;
+        width: 8px;
+      }
+
+      .flame {
+        width: 10px;
+        height: 14px;
+      }
+
+      .candles {
+        gap: 12px;
+      }
+
+      .mic-btn {
+        padding: 10px 22px;
+        font-size: 0.85rem;
+      }
+
+      /* Scrapbook */
+      .book-wrap {
+        width: 92vw;
+        height: 62vw;
+      }
+
+      .book-title {
+        font-size: 1rem;
+        margin-bottom: 0.3rem;
+      }
+
+      .book-spine {
+        width: 16px;
+      }
+
+      .book-static {
+        width: calc(50% - 8px);
+      }
+
+      .flipper {
+        width: calc(50% - 8px);
+      }
+
+      .book-nav {
+        gap: 0.6rem;
+      }
+
+      .book-nav button {
+        width: 30px;
+        height: 30px;
+        font-size: 0.7rem;
+      }
+
+      .page-content {
+        padding: 8px 6px;
+      }
+
+      .page-photo {
+        width: 92%;
+      }
+
+      /* Envelope */
+      .envelope {
+        width: 85vw;
+        height: 60vw;
+      }
+
+      .envelope-seal {
+        width: 44px;
+        height: 44px;
+      }
+
+      .seal-crown {
+        font-size: 1rem;
+      }
+
+      .mini-cake {
+        transform: scale(0.4);
+      }
+
+      .envelope-card .card-text {
+        font-size: 0.85rem;
+      }
+
+      /* Letter */
+      .letter-paper {
+        width: 92vw;
+        max-height: 65vh;
+        padding: 1.4rem 1.2rem;
+      }
+
+      .letter-arabic {
+        font-size: 0.85rem;
+        margin-bottom: 0.8rem;
+      }
+
+      .letter-greeting {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .letter-body p {
+        margin-bottom: 0.7rem;
+      }
+
+      .letter-sign .sign-name {
+        font-size: 1.2rem;
+      }
+
+      .letter-continue-btn {
+        padding: 10px 26px;
+        font-size: 0.88rem;
+      }
+
+      /* Page 3 */
+      .photostrip {
+        width: 120px;
+      }
+
+      .p3-message {
+        font-size: 0.85rem;
+        padding: 0 1rem;
+      }
+    }
+
+    /* ── Medium phones (≤ 640px) ── */
+    @media (max-width: 640px) {
+      .book-scene {
+        gap: 0.8rem;
+      }
+
+      .book-wrap {
+        width: min(90vw, 500px);
+        height: min(60vw, 340px);
+      }
+
+      .book-spine {
+        width: 20px;
+      }
+
+      .book-static {
+        width: calc(50% - 10px);
+      }
+
+      .flipper {
+        width: calc(50% - 10px);
+      }
+
+      .letter-scene {
+        padding: 1rem;
+      }
+
+      .letter-paper {
+        width: min(380px, 90vw);
+        max-height: 68vh;
+        padding: 1.5rem 1.3rem;
+      }
+
+      .envelope {
+        width: min(300px, 82vw);
+        height: min(210px, 56vw);
+      }
+
+      .p3-inner {
+        gap: 2rem;
+      }
+    }
+
+    /* ── Landscape phones ── */
+    @media (max-height: 500px) and (orientation: landscape) {
+      .page1-title {
+        font-size: 1.3rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .cake-top {
+        width: 100px;
+        height: 35px;
+      }
+
+      .cake-bottom {
+        width: 140px;
+        height: 45px;
+      }
+
+      .cake-plate {
+        width: 160px;
+        height: 8px;
+      }
+
+      .candle-body {
+        height: 22px;
+      }
+
+      .book-wrap {
+        width: min(55vh, 500px);
+        height: min(38vh, 340px);
+      }
+
+      .letter-paper {
+        max-height: 75vh;
+        padding: 1rem;
+      }
+
+      .letter-greeting {
+        font-size: 1rem;
+      }
+
+      .envelope {
+        width: min(260px, 50vw);
+        height: min(180px, 35vw);
+      }
+
+      .mini-cake {
+        transform: scale(0.35);
+      }
+    }
+
+    /* ── Touch device improvements ── */
+    @media (hover: none) and (pointer: coarse) {
+
+      /* Larger tap targets */
+      .mic-btn {
+        min-height: 44px;
+        min-width: 120px;
+      }
+
+      .letter-continue-btn {
+        min-height: 44px;
+      }
+
+      .book-nav button {
+        min-width: 36px;
+        min-height: 36px;
+      }
+
+      .dot {
+        min-width: 12px;
+        min-height: 12px;
+      }
+
+      /* Disable hover effects */
+      .envelope-scene:hover .envelope {
+        transform: none;
+        box-shadow: 0 15px 50px rgba(122, 74, 90, 0.3), 0 0 20px rgba(212, 168, 67, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      }
+
+      .scrap-polaroid:hover {
+        transform: initial !important;
+        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.18), 0 1px 3px rgba(0, 0, 0, 0.1);
+      }
+    }
+
+    /* ── Safe area for notched phones ── */
+    @supports (padding: env(safe-area-inset-top)) {
+      .page {
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+      }
+
+      .letter-scene {
+        padding-bottom: calc(1.5rem + env(safe-area-inset-bottom));
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <canvas id="confetti-canvas"></canvas>
+  <div class="page-fade" id="fade"></div>
+
+  <style>
+    @keyframes pulseText {
+      0% { transform: scale(1); opacity: 0.8; }
+      50% { transform: scale(1.05); opacity: 1; }
+      100% { transform: scale(1); opacity: 0.8; }
+    }
+
+    @keyframes fadeInDark {
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes popUpText {
+      0% {
+        opacity: 0;
+        transform: scale(0.8) translateY(10px);
+      }
+
+      70% {
+        transform: scale(1.05) translateY(-2px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    #lightBulb:hover {
+      transform: scale(1.1);
+      filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.2));
+    }
+  </style>
+
+  <!-- ══ PAGE START — DARK ROOM ══ -->
+  <div class="page active" id="page-start" style="background-color: #080808; background-image: none; z-index: 50;">
+    <div
+      style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
+      <p id="darkText1"
+        style="color: #555; font-family: 'DM Sans', sans-serif; margin-bottom: 3rem; letter-spacing: 0.05em; font-size: 1.1rem; opacity: 0; animation: fadeInDark 2s ease forwards 0.5s;">
+        Ruangan ini sangat gelap...</p>
+      <img src="bulb.png" id="lightBulb"
+        style="width: 80px; cursor: pointer; transition: all 0.3s ease; opacity: 0; animation: fadeInDark 2s ease forwards 1.5s;"
+        onclick="turnOnLight()">
+      <p id="darkText2"
+        style="color: #444; font-family: 'DM Sans', sans-serif; margin-top: 2rem; font-size: 0.85rem; opacity: 0; animation: fadeInDark 2s ease forwards 2.5s; transition: opacity 0.5s;">
+        Ketuk lampunya untuk menyalakan</p>
+    </div>
+  </div>
+
+  <!-- ══ PAGE 0 — ROYAL ENVELOPE ══ -->
+  <div class="page" id="page0">
+    <div class="envelope-scene" id="envelopeScene">
+      <!-- Gold sparkle particles -->
+      <span class="env-deco" style="top:10%;left:10%;font-size:0.5rem;color:#d4a843;animation-delay:0s;">✦</span>
+      <span class="env-deco" style="top:25%;right:12%;font-size:0.4rem;color:#d4a843;animation-delay:1s;">✦</span>
+      <span class="env-deco" style="bottom:30%;left:15%;font-size:0.6rem;color:#d4a843;animation-delay:2s;">✦</span>
+      <span class="env-deco" style="top:15%;right:25%;font-size:0.35rem;color:#f2c4b8;animation-delay:0.5s;">✦</span>
+      <span class="env-deco" style="bottom:20%;right:18%;font-size:0.45rem;color:#d4a843;animation-delay:1.5s;">✦</span>
+      <span class="env-deco" style="top:40%;left:8%;font-size:0.3rem;color:#f2c4b8;animation-delay:2.5s;">✦</span>
+
+      <div class="envelope" id="envelope">
+        <div class="envelope-inner"></div>
+        <div class="envelope-card">
+          <!-- Mini cake (same as page 1) -->
+          <div class="mini-cake">
+            <div class="m-candles">
+              <div class="m-candle">
+                <div class="m-flame"></div>
+                <div class="m-stick c1"></div>
+              </div>
+              <div class="m-candle">
+                <div class="m-flame"></div>
+                <div class="m-stick c2"></div>
+              </div>
+              <div class="m-candle">
+                <div class="m-flame"></div>
+                <div class="m-stick c3"></div>
+              </div>
+            </div>
+            <div class="m-top"></div>
+            <div class="m-bottom"></div>
+            <div class="m-plate"></div>
+          </div>
+          <div class="card-text">Happy Birthday!</div>
+          <div class="card-sub">with love ♥</div>
+        </div>
+        <div class="envelope-left-fold"></div>
+        <div class="envelope-right-fold"></div>
+        <div class="envelope-bottom"></div>
+        <div class="envelope-flap"></div>
+        <div class="envelope-seal">
+          <div class="seal-outer">
+            <span class="seal-crown">👑</span>
+          </div>
+        </div>
+      </div>
+
+      <p class="envelope-hint">• click to open •</p>
+    </div>
+
+    <!-- Letter (hidden until envelope opens) -->
+    <div class="letter-scene" id="letterScene">
+      <div class="letter-paper">
+        <p class="letter-arabic">بَارَكَ اللَّهُ فِي عُمْرِك</p>
+
+        <h2 class="page1-title"
+          style="color: var(--mauve); font-size: clamp(1.4rem, 3.5vw, 2rem); margin-bottom: 1.5rem; margin-top: 0.5rem;">
+          Happy 22nd
+          birthday,<br><span>my sweetheart 🤍</span></h2>
+
+        <div class="letter-divider">• • •</div>
+
+        <div class="letter-body">
+          <p>Semoga setiap detik usiamu dipenuhi berkah, seperti doa yang diam-diam aku langitkan untukmu.</p>
+
+          <p>Di usiamu yang ke-22 ini, kamu tetap menjadi alasan kenapa hal sederhana terasa begitu indah senyummu
+            seperti tenang, hadirmu seperti rumah yang selalu ingin aku tuju.</p>
+
+          <p class="letter-italic">Sedikit seperti rasa yang tumbuh pelan seperti bunga yang mekar tanpa suara, tapi
+            pasti.</p>
+
+          <p>Jika waktu adalah perjalanan panjang, aku ingin tetap berjalan di sisimu menyaksikan mimpimu tumbuh,
+            menggenggam harapanmu yang perlahan jadi nyata, dan menjaga hangat yang kita punya.</p>
+
+          <p>Terima kasih sudah menjadi bagian paling lembut dalam hidupku, yang tanpa sadar mengubah hari-hariku jadi
+            lebih berarti.</p>
+
+          <p>Semoga semesta selalu baik padamu, dan semoga aku masih diberi kesempatan untuk mencintaimu, hari ini,
+            esok, dan seterusnya.</p>
+        </div>
+
+        <div class="letter-divider">• • •</div>
+
+        <div class="letter-sign">
+          With love,<br>
+          <span class="sign-name">Royan ✨</span>
+        </div>
+      </div>
+
+      <button class="letter-continue-btn" onclick="goToPage(1)">Tiup Lilinnya 🎂</button>
+    </div>
+  </div>
+
+  <!-- ══ PAGE 1 ══ -->
+  <div class="page" id="page1">
+    <div class="top-nav">
+      <button class="nav-btn" onclick="goToPage(0)">
+        <span>←</span> Amplop
+      </button>
+    </div>
+    <h1 class="page1-title">Selamat Ulang Tahun,<br><span>Sayangku ✨</span></h1>
+
+    <div class="cake-scene">
+      <div class="candles">
+        <div class="candle">
+          <div class="flame" id="f1"></div>
+          <div class="candle-body"></div>
+        </div>
+        <div class="candle">
+          <div class="flame" id="f2"></div>
+          <div class="candle-body"></div>
+        </div>
+        <div class="candle">
+          <div class="flame" id="f3"></div>
+          <div class="candle-body"></div>
+        </div>
+      </div>
+      <div class="cake-top">
+        <div class="cake-frosting"></div>
+      </div>
+      <div class="cake-bottom"></div>
+      <div class="cake-plate"></div>
+    </div>
+
+    <div style="margin-top: 2rem; text-align: center;">
+      <button class="mic-btn" id="micBtn">🎤 Izinkan Mikrofon</button>
+      <p class="mic-hint" id="micHint" style="display:none">Tiup lilinnya... 💨</p>
+      <div class="sound-bar" id="soundBar">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <div id="skipHint" style="margin-top: 1rem;">
+        <button onclick="blowAll(true)"
+          style="background:rgba(255,255,255,0.3); border:1px solid rgba(255,255,255,0.5); color:var(--dark); padding: 8px 16px; border-radius: 20px; font-family:'DM Sans', sans-serif; font-size:0.85rem; font-weight: bold; cursor:pointer; backdrop-filter: blur(5px); box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: background 0.3s;">
+          Lewati (Skip) ⏭️
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ PAGE 2 ══ -->
+  <div class="page" id="page2">
+    <div class="top-nav">
+      <button class="nav-btn" onclick="goToPage(1)">
+        <span>←</span> Kue
+      </button>
+    </div>
+    <div class="slideshow" id="slideshow">
+      <div class="slide-counter" id="slideCounter">1 / 6</div>
+      <!-- Slides will be injected here by JS -->
+    </div>
+
+    <div class="slide-nav">
+      <div class="slide-dots" id="slideDots"></div>
+    </div>
+
+    <button class="slide-next-btn" id="toPage3Btn" onclick="goToPage(3)" style="display:none;">Menuju halaman
+      terakhir</button>
+
+    <!-- Animated Swipe Notification -->
+    <div class="swipe-notif" id="swipeNotif">
+      <span class="hand-icon">👆</span>
+      <p>Geser foto ke kiri atau kanan</p>
+    </div>
+  </div>
+
+  <!-- ══ PAGE 3 ══ -->
+  <div class="page" id="page3">
+    <div class="top-nav">
+      <button class="nav-btn" onclick="goToPage(2)">
+        <span>←</span> Scrapbook
+      </button>
+      <button class="nav-btn" onclick="goToPage(0)">
+        <span>🏠</span> Awal
+      </button>
+    </div>
+    <div class="hearts" id="hearts"></div>
+
+    <div
+      style="display:flex;flex-direction:column;align-items:center;gap:0;position:relative;z-index:1; padding-bottom: 2rem; padding-top: 0; width: 100%;">
+      <div class="machine" style="width: 260px; margin-top: -15px;">
+        <div class="machine-slot"></div>
+        <div class="machine-lens"></div>
+        <div class="machine-buttons">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+
+      <div class="strip-wrapper">
+        <img class="photostrip" id="photostrip" src="strip1.png" alt="Our Photostrip"
+          style="padding: 0; background: transparent; width: 220px; height: auto;">
+      </div>
+    </div>
+
+    <!-- Pesan Hangat -->
+    <p class="p3-message" id="p3msg" style="margin-top: 0.5rem;">
+      <em>Semoga dunia selalu hangat dan lembut padamu.</em> 🤍
+    </p>
+
+    <!-- Photobooth Section -->
+    <div id="photobooth-section" style="margin-top: 2rem; display: flex; flex-direction: column; align-items: center; z-index: 10;">
+      <button class="letter-continue-btn" id="start-pb-btn" onclick="startPhotobooth()" style="margin-bottom: 1rem;">Buat Photostrip Sendiri 📸</button>
+      
+      <div id="pb-container" style="display: none; flex-direction: column; align-items: center; background: rgba(0,0,0,0.4); padding: 1rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px); width: 100%; max-width: 400px;">
+        
+        <!-- Template Selection (Step 1) -->
+        <div id="pb-template-select" style="width: 100%; display: flex; flex-direction: column; align-items: center;">
+          <p style="color: white; font-family: 'DM Sans', sans-serif; margin-bottom: 15px; font-size: 1.2rem; font-weight: bold; animation: pulseText 2s infinite;">Pilih Template:</p>
+          
+          <!-- Template Preview -->
+          <div style="width: 160px; height: 213px; margin-bottom: 15px; background: rgba(255,255,255,0.8); border-radius: 8px; border: 3px solid rgba(255,255,255,0.5); overflow: hidden; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(0,0,0,0.4);">
+            <img id="template-preview-img" src="template1_trans.png" style="width: 100%; height: 100%; object-fit: contain;">
+          </div>
+
+          <div style="display: flex; overflow-x: auto; gap: 15px; padding-bottom: 15px; width: 100%; max-width: 320px; scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.5) transparent;">
+            <!-- Thumbnails generated dynamically via JS -->
+            <div id="template-list" style="display: flex; gap: 15px;"></div>
+          </div>
+          <button class="mic-btn" id="pb-start-cam-btn" onclick="startCamera()" style="margin-top: 10px;" disabled>Pilih Template Dulu</button>
+        </div>
+
+        <!-- Camera Interface (Step 2) -->
+        <div id="pb-camera-view" style="display: none; flex-direction: column; align-items: center; width: 100%;">
+          <div style="position: relative; width: 220px; aspect-ratio: 3/4; background: #000; border-radius: 8px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+            <video id="pb-video" autoplay playsinline style="display: none;"></video>
+            <canvas id="pb-live-canvas" width="600" height="800" style="width: 100%; height: 100%; object-fit: cover;"></canvas>
+            <div id="pb-countdown" style="position: absolute; inset: 0; display: none; align-items: center; justify-content: center; font-size: 4rem; color: white; text-shadow: 0 2px 10px rgba(0,0,0,0.5); font-family: 'DM Sans', sans-serif; font-weight: bold; z-index: 5;"></div>
+            <div id="pb-flash" style="position: absolute; inset: 0; background: white; opacity: 0; pointer-events: none; z-index: 10;"></div>
+          </div>
+
+          <div style="display: flex; gap: 10px; margin-top: 1rem; flex-wrap: wrap; justify-content: center;">
+            <button class="mic-btn" id="pb-capture-btn" onclick="takePhoto()">Ambil Foto</button>
+            <button class="mic-btn" id="pb-retake-btn" onclick="resetPhotobooth()" style="display: none; background: rgba(255,255,255,0.2);">Ulangi</button>
+          </div>
+        </div>
+
+        <!-- Filter & Download Interface (Step 3) -->
+        <div id="pb-filter-view" style="display: none; flex-direction: column; align-items: center; width: 100%; margin-top: 1rem; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 1rem;">
+          <p style="color: white; font-family: 'DM Sans', sans-serif; margin-bottom: 10px; font-size: 0.85rem;">Pilih Filter:</p>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin-bottom: 15px;">
+            <button class="filter-btn" onclick="applyFilter('none')" style="padding: 6px 12px; border-radius: 20px; border: none; background: rgba(255,255,255,0.2); color: white; cursor: pointer;">Normal</button>
+            <button class="filter-btn" onclick="applyFilter('grayscale(100%)')" style="padding: 6px 12px; border-radius: 20px; border: none; background: rgba(255,255,255,0.2); color: white; cursor: pointer;">B&W</button>
+            <button class="filter-btn" onclick="applyFilter('sepia(100%)')" style="padding: 6px 12px; border-radius: 20px; border: none; background: rgba(255,255,255,0.2); color: white; cursor: pointer;">Sepia</button>
+            <button class="filter-btn" onclick="applyFilter('contrast(120%) saturate(120%) sepia(30%)')" style="padding: 6px 12px; border-radius: 20px; border: none; background: rgba(255,255,255,0.2); color: white; cursor: pointer;">Vintage</button>
+          </div>
+          <button class="mic-btn" id="pb-download-btn" onclick="downloadPhotostrip()" style="background: var(--rose); font-size: 1rem; padding: 12px 30px;">Download ⬇️</button>
+        </div>
+        
+      </div>
+    </div>
+    
+    <!-- Hidden final canvas to composite the image -->
+    <canvas id="pb-final-canvas" width="800" height="2400" style="display: none;"></canvas>
+  </div>
+
+  <audio id="bgm" src="miliyar.m4a" preload="auto" loop></audio>
+
+  <script src="templates_base64.js"></script>
+  <script src="app.js"></script>
+  <script src="transition.js"></script>
+</body>
+
+</html>
