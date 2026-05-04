@@ -679,6 +679,51 @@ function applyFilter(filter, btn) {
   renderFinalPhotostrip();
 }
 
+function applyManualFilter(ctx, filterType, width, height) {
+  if (filterType === 'none') return;
+  
+  const imgData = ctx.getImageData(0, 0, width, height);
+  const data = imgData.data;
+  
+  for (let i = 0; i < data.length; i += 4) {
+    let r = data[i], g = data[i+1], b = data[i+2];
+    
+    if (filterType.includes('grayscale')) {
+      let v = 0.3 * r + 0.59 * g + 0.11 * b;
+      data[i] = data[i+1] = data[i+2] = v;
+    } else if (filterType.includes('sepia') && !filterType.includes('contrast')) {
+      data[i] = Math.min(255, (r * 0.393) + (g * 0.769) + (b * 0.189));
+      data[i+1] = Math.min(255, (r * 0.349) + (g * 0.686) + (b * 0.168));
+      data[i+2] = Math.min(255, (r * 0.272) + (g * 0.534) + (b * 0.131));
+    } else if (filterType.includes('contrast')) { // Vintage
+      // 1. Sepia ~30%
+      let tr = r + ((r * 0.393 + g * 0.769 + b * 0.189) - r) * 0.3;
+      let tg = g + ((r * 0.349 + g * 0.686 + b * 0.168) - g) * 0.3;
+      let tb = b + ((r * 0.272 + g * 0.534 + b * 0.131) - b) * 0.3;
+      
+      // 2. Contrast 1.2
+      tr = 1.2 * (tr - 128) + 128;
+      tg = 1.2 * (tg - 128) + 128;
+      tb = 1.2 * (tb - 128) + 128;
+      
+      // 3. Saturate 1.2
+      let lum = 0.3 * tr + 0.59 * tg + 0.11 * tb;
+      tr = lum + 1.2 * (tr - lum);
+      tg = lum + 1.2 * (tg - lum);
+      tb = lum + 1.2 * (tb - lum);
+      
+      // 4. Vintage Warmth
+      tr += 15;
+      tb -= 15;
+      
+      data[i] = Math.min(255, Math.max(0, tr));
+      data[i+1] = Math.min(255, Math.max(0, tg));
+      data[i+2] = Math.min(255, Math.max(0, tb));
+    }
+  }
+  ctx.putImageData(imgData, 0, 0);
+}
+
 function finishPhotobooth() {
   // Do NOT stop camera here so we don't ask permission again on retake
   if (window.pbDrawFrame) cancelAnimationFrame(window.pbDrawFrame);
@@ -718,13 +763,24 @@ function renderFinalPhotostrip() {
       img.onload = () => {
         loadedPhotos++;
         if (loadedPhotos === pbMaxPhotos) {
-          ctx.save();
-          ctx.filter = pbCurrentFilter;
+          // Use offscreen canvas to apply manual pixel filters (fixes iOS Safari ctx.filter bug)
+          const offCanvas = document.createElement('canvas');
+          const offCtx = offCanvas.getContext('2d', { willReadFrequently: true });
+          
           for (let j = 0; j < pbMaxPhotos; j++) {
             const r = template.regions[j];
-            ctx.drawImage(photoImgs[j], r.x, r.y, r.w, r.h);
+            offCanvas.width = r.w;
+            offCanvas.height = r.h;
+            
+            // Draw original photo to offscreen canvas
+            offCtx.drawImage(photoImgs[j], 0, 0, r.w, r.h);
+            
+            // Apply pixel manipulation filter
+            applyManualFilter(offCtx, pbCurrentFilter, r.w, r.h);
+            
+            // Draw processed photo to final canvas
+            ctx.drawImage(offCanvas, r.x, r.y, r.w, r.h);
           }
-          ctx.restore();
           
           ctx.drawImage(templateImg, 0, 0, finalCanvas.width, finalCanvas.height);
           
