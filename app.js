@@ -698,7 +698,6 @@ function renderFinalPhotostrip() {
   const template = pbSelectedTemplate;
   
   const templateImg = new Image();
-  templateImg.src = template.src;
   templateImg.onload = () => {
     ctx.clearRect(0, 0, finalCanvas.width, finalCanvas.height);
     ctx.fillStyle = '#ffffff';
@@ -709,7 +708,6 @@ function renderFinalPhotostrip() {
     
     for (let i = 0; i < pbMaxPhotos; i++) {
       const img = new Image();
-      img.src = pbPhotos[i];
       photoImgs.push(img);
       img.onload = () => {
         loadedPhotos++;
@@ -733,8 +731,10 @@ function renderFinalPhotostrip() {
           ctxLive.drawImage(finalCanvas, dx, dy, dw, dh);
         }
       };
+      img.src = pbPhotos[i];
     }
   };
+  templateImg.src = template.src;
 }
 
 function resetPhotobooth() {
